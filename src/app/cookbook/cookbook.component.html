@@ -1,0 +1,19 @@
+<h2>Current recipes</h2>
+<ol>
+    <li *ngFor="let item of myCookbook.all()">
+        <b>{{item.name}}</b> - {{item.description}}
+    </li>
+</ol>
+
+<h3>Delete a Recipe</h3>
+<form>
+    <input type="text" id="menuid">
+    <input type="submit" id="delsubmit">
+</form>
+
+<h3>Add a Recipe</h3>
+<form>
+    <input type="text" id="menuname">
+    <input type="text" id="menudesc">
+    <input type="submit" id="addsubmit">
+</form>
