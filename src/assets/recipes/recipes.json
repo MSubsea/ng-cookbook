@@ -1,0 +1,42 @@
+[
+    {
+        "recipeId": 1,
+        "name": "Cake",
+        "description": "Delicious vanilla cake with chocolate frosting",
+        "rating": 5,
+        "done": true,
+        "imageUrl":"https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FrZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+        "recipeId": 2,
+        "name": "Hot Chocolate",
+        "description": "The best you will taste",
+        "rating": 2,
+        "done": false,
+        "imageUrl":"https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG90JTIwY2hvY29sYXRlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+        "recipeId": 5,
+        "name": "Hamburger",
+        "description": "Juicy and tasty",
+        "rating": 3,
+        "done": false,
+        "imageUrl":"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGFtYnVyZ2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+        "recipeId": 8,
+        "name": "Pizza",
+        "description": "It will feel like you're in Italy",
+        "rating": 2,
+        "done": true,
+        "imageUrl":"https://images.unsplash.com/photo-1594007654729-407eedc4be65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    },
+    {
+        "recipeId": 10,
+        "name": "Ice Cream",
+        "description": "Vanilla with rainbow sprinkles",
+        "rating": 5,
+        "done": true,
+        "imageUrl":"https://images.unsplash.com/photo-1560008581-09826d1de69e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aWNlJTIwY3JlYW18ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
+    }
+]

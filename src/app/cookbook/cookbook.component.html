@@ -1,19 +1,45 @@
-<h2>Current recipes</h2>
-<ol>
-    <li *ngFor="let item of myCookbook.all()">
-        <b>{{item.name}}</b> - {{item.description}}
-    </li>
-</ol>
+<div class="container">
+    <div class="card-header">
 
-<h3>Delete a Recipe</h3>
-<form>
-    <input type="text" id="menuid">
-    <input type="submit" id="delsubmit">
-</form>
+        <h2 style="color: rgba(200, 0, 0, 0.8);">Current recipes</h2>
 
-<h3>Add a Recipe</h3>
-<form>
-    <input type="text" id="menuname">
-    <input type="text" id="menudesc">
-    <input type="submit" id="addsubmit">
-</form>
+    </div>
+    <div class="card-body">
+
+        <ol>
+            <li *ngFor="let item of myCookbook.all()">
+                <b>{{item.name}}</b> - {{item.description}}
+            </li>
+        </ol>
+    </div>
+    <hr>
+    <form class="mt-4">
+        <h3 style="color: grey;">Open Cookbook</h3>
+       <input type="file" id="uploadName" value="cookbook.csv">
+    </form>    
+    <hr>
+    <form class="mt-4">
+        <h3 style="color: grey;">Download Cookbook</h3>
+       <input type="input" id="downloadName" value="cookbook.csv">
+       <input type="submit" id="download">
+    </form>
+    <hr>
+    <div class="card-body mt-5">
+        <h3 style="color: grey;">Delete a Recipe</h3>
+        <form class="mt-4">
+             <input type="text" id="menuid">
+            <input type="submit" id="delsubmit">
+        </form>
+            
+    </div>
+    <hr>
+    <div class="card-body mt-5">
+        <h3 style="color: grey;">Add a Recipe</h3>
+        <form class="mt-4">
+
+            <input type="text" id="menuname">
+            <input type="text" id="menudesc">
+            <input type="submit" id="addsubmit">
+        </form>
+    </div>
+</div>
