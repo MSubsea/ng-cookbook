@@ -60,6 +60,12 @@ export class CookbookComponent implements OnInit {
     val.value = "";
   }
 
+  deleteRecipe(recipeId:number) {
+    console.log("Deleting recipe: " + recipeId);
+    this.myCookbook.remove_recipe(recipeId);
+    this.filteredRecipes = this.myCookbook.all();
+  }
+
   addMenu() {
     const name:HTMLInputElement = <HTMLInputElement>document.getElementById("menuname");
     const desc:HTMLInputElement = <HTMLInputElement>document.getElementById("menudesc");
@@ -158,11 +164,6 @@ export class CookbookComponent implements OnInit {
     document.getElementById("addsubmit")!.addEventListener("click", (event) => {
       event.preventDefault();
       this.addMenu();
-    })
-
-    document.getElementById("delsubmit")!.addEventListener("click", (event) => {
-      event.preventDefault();
-      this.deleteMenu();
     })
 
     /*document.getElementById("upload")!.addEventListener("click", (event) => {

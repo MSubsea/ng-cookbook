@@ -19,8 +19,8 @@ export class Cookbook {
 
     remove_recipe(recipe_index:number) {
         // TODO: this.recipes.reduce(recipe_index);
-        if ((recipe_index >= 0)  || (recipe_index < this.recipes.length)) {
-            this.recipes = this.recipes.filter(obj => obj !== this.recipes[recipe_index])
+        if (recipe_index >= 0) {
+            this.recipes = this.recipes.filter(obj => obj.recipeId !== recipe_index)
         }
     }
 }

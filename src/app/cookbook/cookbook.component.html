@@ -28,6 +28,7 @@
                 <th>Description</th>
                 <th>Rating</th>
                 <th>Done</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -37,6 +38,7 @@
                   <td>{{recipe.description}}</td>
                   <td>{{recipe.rating}}</td>
                   <td>{{recipe.done}}</td>
+                  <td><button class="btn btn-light" (click)="deleteRecipe(recipe.recipeId)">Delete</button></td>
               </tr>
             </tbody>
           </table>
@@ -52,15 +54,6 @@
        <input type="input" id="downloadName" value="cookbook.csv">
        <input type="submit" id="download">
     </form>
-    <hr>
-    <div class="card-body mt-5">
-        <h3 style="color: grey;">Delete a Recipe</h3>
-        <form class="mt-4">
-             <input type="text" id="menuid">
-            <input type="submit" id="delsubmit">
-        </form>
-            
-    </div>
     <hr>
     <div class="card-body mt-5">
         <h3 style="color: grey;">Add a Recipe</h3>
