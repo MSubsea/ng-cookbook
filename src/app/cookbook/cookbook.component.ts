@@ -15,6 +15,27 @@ export class CookbookComponent implements OnInit {
   sub!: Subscription;
   filteredRecipes: Recipe[] = [];
   errorMessage: string = "";
+  imageWidth: number = 70;
+  imageMargin: number = 2;
+  showImage:boolean = false;
+  private _listFilter:string = "";
+  private _nextId = -1;
+
+  get listFilter():string {
+    return this._listFilter;
+  }
+
+  set listFilter(value:string) {
+    this._listFilter = value;
+    this.filteredRecipes = this.performFilter(value);
+  }
+
+  performFilter(filterBy: string): Recipe[] {
+    return this.myCookbook.all().filter((recipe: Recipe) => {
+      let n:string = recipe.name.toLowerCase()
+      return n.includes(this.listFilter.toLowerCase());
+    })
+  }
 
   constructor(private recipeService:RecipeService) { 
     this.myCookbook = new Cookbook()
@@ -22,6 +43,10 @@ export class CookbookComponent implements OnInit {
     this.myCookbook.add_recipe(menu1);
     let menu2 = new Recipe("Maki", "japanese Sushi");
     this.myCookbook.add_recipe(menu2);  */
+  }
+
+  toggleImage() {
+    this.showImage = !this.showImage;
   }
 
   deleteMenu() {
@@ -38,10 +63,21 @@ export class CookbookComponent implements OnInit {
   addMenu() {
     const name:HTMLInputElement = <HTMLInputElement>document.getElementById("menuname");
     const desc:HTMLInputElement = <HTMLInputElement>document.getElementById("menudesc");
+    const rating:HTMLInputElement = <HTMLInputElement>document.getElementById("menurating");
+    const done:HTMLInputElement = <HTMLInputElement>document.getElementById("menudone");
+    const imageUrl:HTMLInputElement = <HTMLInputElement>document.getElementById("menuimageurl");
     const newRecipe = new Recipe(name.value, desc.value);
+    newRecipe.rating = parseInt(rating.value, 10);
+    newRecipe.done = done.value === "done";
+    newRecipe.imageUrl = imageUrl.value;
+    newRecipe.recipeId = this._nextId;
+    this._nextId += 1;
     this.myCookbook.add_recipe(newRecipe);
     name.value = "";
     desc.value = "";
+    rating.value = "1";
+    done.value = "not done"
+    imageUrl.value = "";
   }
 
   uploadFromCsv() {
@@ -99,6 +135,7 @@ export class CookbookComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.listFilter = "";
     this.sub = this.recipeService.getRecipes().subscribe({
       next: recipes => {
         recipes.forEach(recipe => {
@@ -107,6 +144,9 @@ export class CookbookComponent implements OnInit {
           new_recipe.imageUrl = recipe.imageUrl;
           new_recipe.done = recipe.done;
           new_recipe.recipeId = recipe.recipeId;
+          if (recipe.recipeId >= this._nextId) {
+            this._nextId = recipe.recipeId + 1;
+          }
           this.myCookbook.add_recipe(new_recipe);
         })
         this.filteredRecipes = this.myCookbook.all();

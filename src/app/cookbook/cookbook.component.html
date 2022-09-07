@@ -5,12 +5,41 @@
 
     </div>
     <div class="card-body">
-
-        <ol>
-            <li *ngFor="let item of myCookbook.all()">
-                <b>{{item.name}}</b> - {{item.description}}
-            </li>
-        </ol>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+              <!--<input type='text' [(ngModel)]='listFilter' /> -->
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-6'>
+              <h4>Filtered by: </h4>
+          </div>
+        </div>
+        <table class='table' *ngIf="filteredRecipes.length">
+            <thead>
+              <tr>
+                <th>
+                  <button class='btn btn-primary' (click)="toggleImage()">
+                    {{ showImage ? "Hide" : "Show" }} Image
+                  </button>
+                </th>
+                <th>Recipe</th>
+                <th>Description</th>
+                <th>Rating</th>
+                <th>Done</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let recipe of filteredRecipes">
+                  <td><img *ngIf="showImage" [src]="recipe.imageUrl" [title]="recipe.name" [style.width.px]="imageWidth" [style.margin.px]="imageMargin"></td>
+                  <td>{{recipe.name}}</td>
+                  <td>{{recipe.description}}</td>
+                  <td>{{recipe.rating}}</td>
+                  <td>{{recipe.done}}</td>
+              </tr>
+            </tbody>
+          </table>
     </div>
     <hr>
     <form class="mt-4">
@@ -36,10 +65,36 @@
     <div class="card-body mt-5">
         <h3 style="color: grey;">Add a Recipe</h3>
         <form class="mt-4">
-
-            <input type="text" id="menuname">
-            <input type="text" id="menudesc">
-            <input type="submit" id="addsubmit">
+            <div class="form-group d-flex">
+              <label for="menuname" class="col-sm-2 control-label">Menu Name</label>
+              <input type="text" id="menuname" class="form-control">
+            </div>
+            <div class="form-group d-flex">
+              <label for="menudesc" class="col-sm-2 control-label">Menu Description</label>
+              <input type="text" id="menudesc" class="form-control">
+            </div>
+            <div class="form-group d-flex">
+              <label for="menurating" class="col-sm-2 control-label">Menu Rating</label>
+              <select class="form-control" id="menurating">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+            <div class="form-group d-flex">
+              <label for="menudone" class="col-sm-2 control-label">Menu Done</label>
+              <select class="form-control" id="menudone">
+                <option>not done</option>
+                <option>done</option>
+              </select>              
+            </div>
+            <div class="form-group d-flex">
+              <label for="menuimageurl" class="col-sm-2 control-label">Menu Image URL</label>
+              <input type="text" id="menuimageurl" class="form-control">
+            </div>
+            <input type="submit" id="addsubmit" class="btn btn-primary">
         </form>
     </div>
 </div>
