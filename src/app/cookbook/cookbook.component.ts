@@ -6,7 +6,6 @@ import { RecipeService } from './recipe.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-cookbook',
   templateUrl: './cookbook.component.html',
   styleUrls: ['./cookbook.component.scss']
 })
@@ -27,10 +26,10 @@ export class CookbookComponent implements OnInit {
 
   set listFilter(value:string) {
     this._listFilter = value;
-    this.filteredRecipes = this.performFilter(value);
+    this.filteredRecipes = this.performFilter();
   }
 
-  performFilter(filterBy: string): Recipe[] {
+  performFilter(): Recipe[] {
     return this.myCookbook.all().filter((recipe: Recipe) => {
       let n:string = recipe.name.toLowerCase()
       return n.includes(this.listFilter.toLowerCase());
@@ -39,10 +38,6 @@ export class CookbookComponent implements OnInit {
 
   constructor(private recipeService:RecipeService) { 
     this.myCookbook = new Cookbook()
-    /*let menu1 = new Recipe("Spaghetti Carbonara", "best italian food");
-    this.myCookbook.add_recipe(menu1);
-    let menu2 = new Recipe("Maki", "japanese Sushi");
-    this.myCookbook.add_recipe(menu2);  */
   }
 
   toggleImage() {
