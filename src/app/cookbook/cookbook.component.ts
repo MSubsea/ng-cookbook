@@ -81,17 +81,6 @@ export class CookbookComponent implements OnInit {
     imageUrl.value = "";
   }
 
-  uploadFromCsv() {
-    let csv_array = [];
-    const name:HTMLInputElement = <HTMLInputElement>document.getElementById("uploadName");
-    console.log(name.value);
-    const reader = new FileReader();
-    reader.onload = (e:any) => {
-      console.log(e.target.result);
-    }
-    //reader.readAsArrayBuffer(name.value);
-  }
-
   readSingleFile(e:any) {
     e.preventDefault();
     let file = e.target!.files[0]!;
@@ -122,19 +111,6 @@ export class CookbookComponent implements OnInit {
     })
   }
 
-  downloadAsCsv() {
-    let csv_array = [];
-    const name:HTMLInputElement = <HTMLInputElement>document.getElementById("downloadName");
-    csv_array.push("Name; Description");
-    this.myCookbook.recipes.forEach((recipe) => {
-      csv_array.push(recipe.name + ";" + recipe.description)
-    })
-    let csv_a = csv_array.join("\r\n")
-    let blob = new Blob([csv_a], {type: "text/csv"});
-    console.log(csv_a);
-    saveAs(blob, name.value);
-  }
-
   ngOnInit(): void {
     this.listFilter = "";
     this.sub = this.recipeService.getRecipes().subscribe({
@@ -161,16 +137,11 @@ export class CookbookComponent implements OnInit {
       this.addMenu();
     })
 
-    /*document.getElementById("upload")!.addEventListener("click", (event) => {
-      event.preventDefault();
-      this.uploadFromCsv();
-    })*/
-
     document.getElementById("uploadName")?.addEventListener('change', this.readSingleFile, false)
 
     document.getElementById("download")!.addEventListener("click", (event) => {
       event.preventDefault();
-      this.downloadAsCsv();
+      console.log("TODO ... Download json file")
     })
   }
 
