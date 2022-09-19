@@ -1,2 +1,9 @@
-<p>recipe-detail works!</p>
+<div class="container">
+    <div class='row' *ngIf='recipeLoaded'>
+        <h4>{{thisReceipe?.name}}</h4>
+        <img [src]="thisReceipe?.imageUrl" [title]="thisReceipe?.name" [style.width.px]="imageWidth" [style.margin.px]="imageMargin">
+        <p>{{thisReceipe?.description}}</p>
+        <p>{{thisReceipe?.done}}</p>
+    </div>
+</div>
 <a class="btn btn-primary" href="/">Back to Recipe List</a>

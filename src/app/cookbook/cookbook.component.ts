@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cookbook } from '../lib/cookbook';
 import { Recipe } from '../lib/recipe';
-import { saveAs } from "file-saver";
 import { RecipeService } from './recipe.service';
 import { Subscription } from 'rxjs';
 
